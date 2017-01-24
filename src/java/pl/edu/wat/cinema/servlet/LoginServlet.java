@@ -27,10 +27,10 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query query = session.createQuery("from User where login= '" + login + "'");
+            session.beginTransaction();
+            Query query = session.createQuery("from User where login= '" + login + "'");
         User user = (User) query.uniqueResult();
-        session.getTransaction().commit();
+            session.getTransaction().commit();
         session.close();
 
         if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
